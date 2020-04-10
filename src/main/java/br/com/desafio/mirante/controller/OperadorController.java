@@ -18,7 +18,7 @@ import br.com.desafio.mirante.service.OperadorService;
 @RestController
 public class OperadorController {
 	
-	@Autowired(required=true)
+	@Autowired
 	OperadorService operadorService;
 	
 	@RequestMapping(method=RequestMethod.POST, value="/operadores", consumes=MediaType.APPLICATION_JSON_VALUE)
