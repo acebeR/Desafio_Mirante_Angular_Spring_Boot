@@ -12,7 +12,7 @@ appDesafio.controller("cadastroOperador",  function($scope, $http){
 	$scope.nomeEdit = ""; 
 	$scope.operador = {};
 	$scope.alterar = false;
-	
+	$scope.validaLetraLogin = true;
 
 	function init(){
 		$scope.listaOperadores();

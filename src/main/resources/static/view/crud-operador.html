@@ -1,3 +1,4 @@
+<form name="frmOperador">
 <div>
 	<br>
 	<div class="container">
@@ -6,34 +7,42 @@
 				<label for="email_address"
 					class="col-md-4 col-form-label text-md-right">Nome Operador</label>
 				<div class="col-md-6">
-					<input type="text" ng-model="operador.nome" class="form-control">
+					<input type="text" ng-model="operador.nome" class="form-control" name="txtNome" ng-maxlength="100" required>
+					<span style="color:red" ng-show="frmOperador.txtNome.$error.required && frmOperador.txtNome.$dirty">Campo Nome Obrigatorio</span>
+					<span style="color:red" ng-show="frmOperador.txtNome.$error.maxlength">O nome so pode conter 100 caracteres</span>
 				</div>
 			</div>
 			<div class="form-group col-md-12 row">
 				<label for="email_address"
 					class="col-md-4 col-form-label text-md-right">Login</label>
 				<div class="col-md-6">
-					<input type="text" ng-model="operador.login" class="form-control">
+					<input  type="text" name="txtLogin" ng-model="operador.login" class="form-control" ng-maxlength="15" required>
+					<span style="color:red" ng-show="frmOperador.txtLogin.$error.required && frmOperador.txtLogin.$dirty">Campo Login Obrigatorio</span>
+					<span style="color:red" ng-show="frmOperador.txtLogin.$error.maxlength">O login so pode conter 15 caracteres</span>
 				</div>
 			</div>
 			<div class="form-group col-md-12 row">
 				<label for="email_address"
 					class="col-md-4 col-form-label text-md-right">Senha</label>
 				<div class="col-md-6">
-					<input type="text" ng-model="operador.senha" class="form-control">
+					<input ng-maxlength="15" type="password" ng-model="operador.senha" name="txtSenha" class="form-control" required>
+					<span style="color:red" ng-show="frmOperador.txtSenha.$error.required && frmOperador.txtSenha.$dirty">Campo Senha Obrigatorio</span>
+					<span style="color:red" ng-show="frmOperador.txtSenha.$error.maxlength">O senha so pode conter 15 caracteres</span>
 				</div>
 			</div>
 			<div class="form-group col-md-12 row">
 				<label class="col-md-4  col-form-label text-md-right" for="exampleFormControlSelect1">Perfil</label>
 				<div class="col-md-6">
-					<select ng-model="operador.perfil" class="form-control">
+					<select placeholder="Perfil do Operador" name="selectPerfil" ng-model="operador.perfil" class="form-control" required>
+						<option ng-disabled="true">Perfil do Operador</option>
 						<option>GERENTE</option>
 						<option>ANALISTA</option>
 					</select>
+					<span style="color:red" ng-show="frmOperador.selectPerfil.$error.required && frmOperador.selectPerfil.$dirty">Campo Perfil Obrigatorio</span>
 				</div>
 			</div>
 			<div class="form-group col-md-12 text-center">
-				<button ng-click="adicionarOp()" type="submit" class="btn btn-primary">Cadastrar</button>
+				<button ng-click="adicionarOp()" type="submit" class="btn btn-primary" ng-disabled="frmOperador.$invalid">Cadastrar</button>
 			</div>
 		</div>
 	</div>
@@ -86,3 +95,4 @@
 </div>
 
 </div>
+</form>
