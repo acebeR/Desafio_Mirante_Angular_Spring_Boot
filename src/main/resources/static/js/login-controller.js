@@ -1,3 +1,6 @@
+/*
+ * Programadora: Rebeca Divina Paula
+ */
 appDesafio.controller("loginOperador",  function($scope,$http,$location){
 	$scope.autenticar = autenticar;
 	

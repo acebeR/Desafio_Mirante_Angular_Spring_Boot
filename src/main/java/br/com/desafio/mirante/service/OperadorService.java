@@ -1,3 +1,6 @@
+/*
+ * Programadora: Rebeca Divina Paula
+ */
 package br.com.desafio.mirante.service;
 
 import java.util.Collection;

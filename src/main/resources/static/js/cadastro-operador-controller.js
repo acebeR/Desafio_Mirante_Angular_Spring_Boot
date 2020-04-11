@@ -1,3 +1,6 @@
+/*
+ * Programadora: Rebeca Divina Paula
+ */
 appDesafio.controller("cadastroOperador",  function($scope, $http){
 		
 	$scope.listaOperadores = listaOperadores;

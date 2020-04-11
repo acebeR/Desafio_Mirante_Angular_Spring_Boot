@@ -1,3 +1,6 @@
+/*
+ * Programadora: Rebeca Divina Paula
+ */
 package br.com.desafio.mirante.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;

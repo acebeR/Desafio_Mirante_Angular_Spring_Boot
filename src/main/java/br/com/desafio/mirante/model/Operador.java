@@ -1,3 +1,6 @@
+/*
+ * Programadora: Rebeca Divina Paula
+ */
 package br.com.desafio.mirante.model;
 
 import java.util.Date;

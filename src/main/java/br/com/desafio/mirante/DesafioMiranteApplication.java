@@ -1,3 +1,6 @@
+/*
+ * Programadora: Rebeca Divina Paula
+ */
 package br.com.desafio.mirante;
 
 import org.springframework.boot.SpringApplication;
@@ -7,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import br.com.desafio.mirante.controller.TokenFilter;
+
 
 @SpringBootApplication
 @EnableJpaRepositories

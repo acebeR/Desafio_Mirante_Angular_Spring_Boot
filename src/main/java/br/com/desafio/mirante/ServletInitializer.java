@@ -1,3 +1,6 @@
+/*
+ * Programadora: Rebeca Divina Paula
+ */
 package br.com.desafio.mirante;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
