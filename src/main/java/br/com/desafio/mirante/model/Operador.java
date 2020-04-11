@@ -27,7 +27,7 @@ public class Operador {
 	@Temporal(TemporalType.DATE)
 	private  Date data_cadastro;
 	private	String	perfil;
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 	

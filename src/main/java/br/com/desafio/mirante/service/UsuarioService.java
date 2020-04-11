@@ -19,6 +19,10 @@ public class UsuarioService {
 		return usuarioRepository.save(usuario);
 	}
 
+	public Usuario alterar(Usuario usuario){
+		return usuarioRepository.save(usuario);
+	}
+	
 	public Usuario buscarPorNome(String login){
 		return usuarioRepository.buscarPorLogin(login);
 	}

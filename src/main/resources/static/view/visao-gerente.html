@@ -1,0 +1,168 @@
+<form name="frmGerente">
+<br><br> 
+<center>
+	<h2>Bem Vindo Gerente</h2>
+</center>
+<div>
+
+    <div ng-if="mensagem != ''" class="alert alert-danger" role="alert">
+	  {{mensagem}}
+	</div>
+	<br><br>
+	<div class="container">
+		<div class="row">
+			<div class="form-group col-md-12 row">
+				<label
+					class="col-md-4 col-form-label text-md-right">Nome pessoa</label>
+				<div class="col-md-6">
+					<input type="text" ng-model="pessoa.nome" ng-pattern="/^[a-zA-Z]*$/" class="form-control" name="txtNome" ng-maxlength="100" required>
+					<span style="color:red" ng-show="frmGerente.txtNome.$error.required && frmGerente.txtNome.$dirty">Campo Nome Obrigatorio</span>
+					<span style="color:red" ng-show="frmGerente.txtNome.$error.maxlength">O nome so pode conter 100 caracteres</span>
+					<span style="color:red" ng-show="frmGerente.txtNome.$error.pattern">Campo nome deve conter somente letras</span>
+				</div>
+			</div>
+			<div class="form-group col-md-12 row">
+				<label
+					class="col-md-4 col-form-label text-md-right">Login</label>
+				<div class="col-md-6">
+					<input  type="text" name="txtLogin" ng-model="pessoa.usuario.login" ng-pattern="/^[a-zA-Z]*$/" class="form-control" ng-maxlength="15" required>
+					<span style="color:red" ng-show="frmGerente.txtLogin.$error.required && frmGerente.txtLogin.$dirty">Campo Login Obrigatorio</span>
+					<span style="color:red" ng-show="frmGerente.txtLogin.$error.maxlength">O login so pode conter 15 caracteres</span>
+					<span style="color:red" ng-show="frmGerente.txtLogin.$error.pattern">Campo Login deve conter somente letras</span>
+				</div>
+			</div>
+			<div class="form-group col-md-12 row">
+				<label
+					class="col-md-4 col-form-label text-md-right">Data de Nascimento</label>
+				<div class="col-md-6">
+					<input  type="date" name="dataNascimento" ng-model="pessoa.data_nascimento"  class="form-control" max="{{hoje | date: 'yyyy-MM-dd'}}" required>
+					<span style="color:red" ng-show="frmGerente.dataNascimento.$error.required && frmGerente.dataNascimento.$dirty">Campo Data Obrigatorio</span>
+					<span style="color:red" ng-show="frmGerente.dataNascimento.$error.max">Data invalida</span>
+				</div>
+			</div>
+			<div class="form-group col-md-12 row">
+				<label
+					class="col-md-4 col-form-label text-md-right">Senha</label>
+				<div class="col-md-6">
+					<input ng-maxlength="15" ng-minlength="6" type="password" ng-model="pessoa.usuario.senha" name="txtSenha" class="form-control" required>
+					<span style="color:red" ng-show="frmGerente.txtSenha.$error.required && frmGerente.txtSenha.$dirty">Campo Senha Obrigatorio</span>
+					<span style="color:red" ng-show="frmGerente.txtSenha.$error.maxlength">A senha so pode conter 15 caracteres</span>
+					<span style="color:red" ng-show="frmGerente.txtSenha.$error.minlength">A senha precisa ter no minimo 6 caracteres</span>
+				</div>
+			</div>
+			<div class="form-group col-md-12 row">
+				<label
+					class="col-md-4 col-form-label text-md-right">Confirme a Senha</label>
+				<div class="col-md-6">
+					<input ng-maxlength="15"  type="password" ng-model="confSenha" name="txtConfSenha" class="form-control" required>
+					<span style="color:red" ng-show="frmGerente.txtConfSenha.$error.required && frmGerente.txtConfSenha.$dirty">Campo Senha Obrigatorio</span>
+					<span style="color:red" ng-show="frmGerente.txtConfSenha.$error.maxlength">O campo senha so pode conter 15 caracteres</span>
+					<span style="color:red" ng-show="confSenha != '' && confSenha != pessoa.usuario.senha">As senhas estao diferentes</span>
+				</div>
+			</div>
+			<div class="form-group col-md-12 row">
+				<label class="col-md-4  col-form-label text-md-right" for="exampleFormControlSelect1">Tipo Pessoa</label>
+				<div class="col-md-6">
+					<select placeholder="Perfil do pessoa" name="selectPerfil" ng-model="pessoa.tipoPessoa" class="form-control" required>
+						<option ng-disabled="true">Tipo Pessoa</option>
+						<option>JURIDICA</option>
+						<option>FISICA</option>
+					</select>
+					<span style="color:red" ng-show="frmGerente.selectPerfil.$error.required && frmGerente.selectPerfil.$dirty">Campo Perfil Obrigatorio</span>
+				</div>
+			</div>
+			<div class="form-group col-md-12 row">
+				<label ng-if="pessoa.tipoPessoa == 'JURIDICA'" class="col-md-4  col-form-label text-md-right" for="exampleFormControlSelect1">CNPJ</label>
+				<div ng-if="pessoa.tipoPessoa == 'JURIDICA'" class="form-group col-md-6 ">
+					<input  ui-mask="999.999.999/9999-99" type="text" ng-model="pessoa.documento" name="txtConfSenha" class="form-control" required>
+				</div>
+				<label ng-if="pessoa.tipoPessoa == 'FISICA'" class="col-md-4  col-form-label text-md-right" for="exampleFormControlSelect1">CPF</label>
+				<div ng-if="pessoa.tipoPessoa == 'FISICA'" class="form-group col-md-6">
+					<input ui-mask="999.999.999-99" type="text" ng-model="pessoa.documento" name="txtConfSenha" class="form-control" required>
+				</div>
+
+			</div>
+
+			<div class="form-group col-md-12 text-center">
+				<button ng-click="adicionarOp()" type="submit" class="btn btn-primary" ng-disabled="frmGerente.$invalid">Cadastrar</button>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</form>
+<div class="container">
+	<div class="form-group row">
+		<div class="col-md-12">
+			<form name="frmGerenteAlterar">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">ID</th>
+							<th scope="col">Nome</th>
+							<th scope="col">Tipo Pessoa</th>
+							<th scope="col">Login</th>
+							<th scope="col">Data de Cadastro</th>
+							<th scope="col">Data de Nascimento</th>
+							<th scope="col">CPF/CNPJ</th>
+							<th scope="col"></th>
+							<th scope="col"></th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="p in pessoas | orderBy: 'id'">
+							<td>{{p.id_pessoa}}</td>
+							<td>
+							<label data-ng-if="!alterar">{{p.nome}}</label> <input
+								data-ng-if="alterar" type="text" ng-model="p.nome"
+								class="form-control"></input></td>
+	
+							<td>
+							  	<select data-ng-if="alterar" class="form-control" ng-model="p.tipoPessoa" id="">
+									<option>JURIDICA</option>
+									<option>FISICA</option>
+								</select> 
+								<label data-ng-if="!alterar">{{p.tipoPessoa}}</label>
+							  </td>
+	
+							<td><label data-ng-if="!alterar">{{p.usuario.login}}</label> 
+								<input
+									data-ng-if="alterar" type="text" ng-model="p.usuario.login"
+									class="form-control">
+								</input>
+							</td>
+	
+							<td>{{geraData(p.data_cadastro)}}</td>
+							<td>
+								<label data-ng-if="!alterar">{{geraData(p.data_nascimento)}}</label>
+								<label data-ng-if="alterar"><input id="idDate" type="date" name="dataNascAlterar" ng-model="p.data_nascimento"  max="{{hoje | date: 'yyyy-MM-dd'}}" class="form-control"></label>
+								<span style="color:red" ng-show="frmGerenteAlterar.dataNascAlterar.$error.required && frmGerente.dataNascAlterar.$dirty">Campo Data Obrigatorio</span>
+								<span style="color:red" ng-show="frmGerenteAlterar.dataNascAlterar.$error.max">Data invalida</span>
+							</td>
+							<td>
+								<label ng-if="p.tipoPessoa == 'JURIDICA' && !alterar">{{formataCNPJ(p.documento)}}</label>
+								<input  ui-mask="999.999.999/9999-99"
+								data-ng-if="p.tipoPessoa == 'JURIDICA' && alterar" type="text" ng-model="p.documento"
+								class="form-control"></input>
+								
+								<label ng-if="p.tipoPessoa == 'FISICA' && !alterar">{{formataCPF(p.documento)}}</label>
+								<input ui-mask="999.999.999-99"
+									data-ng-if="p.tipoPessoa == 'FISICA' && alterar" type="text" ng-model="p.documento"
+									class="form-control"></input>
+							</td>
+							<td><button ng-click="excluirpessoa(p)">Excluir</button></td>
+							<td><button ng-click="controleAlterar(p);alterar = !alterar">Alterar</button></td>
+							<td><button data-ng-if="alterar" ng-click="alterarpessoa(p)">Salvar</button></td>
+						</tr>
+	
+					</tbody>
+				</table>
+			</form>
+		</div>
+	</div>
+
+</div>
+
+</div>
+

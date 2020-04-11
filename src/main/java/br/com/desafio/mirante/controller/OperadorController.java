@@ -60,4 +60,10 @@ public class OperadorController {
 		Operador op = operadorService.alterar(operador);
 		return new ResponseEntity<Operador>(op, HttpStatus.OK);
 	}
+	
+	@RequestMapping(method=RequestMethod.GET, value="/operadorPorLogin/{login}", produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Operador> buscarOperadorPorLogin(@PathVariable String login){
+		Operador op = operadorService.buscarPorUsuario(login);
+		return new ResponseEntity<>(op, HttpStatus.OK);
+	}
 }

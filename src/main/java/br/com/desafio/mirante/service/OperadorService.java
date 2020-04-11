@@ -37,5 +37,9 @@ public class OperadorService {
 	public Operador alterar(Operador operador){
 		return  operadorRepository.save(operador);
 	}
+	
+	public Operador buscarPorUsuario(String login){
+		return  operadorRepository.buscarPorUsuario(login);
+	}
 
 }

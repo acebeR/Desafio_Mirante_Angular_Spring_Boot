@@ -1,7 +1,7 @@
 /*
  * Programadora: Rebeca Divina Paula
  */
-var appDesafio = angular.module("appDesafio",['ngRoute'])
+var appDesafio = angular.module("appDesafio",['ngRoute','ui.mask'])
 
 
 appDesafio.config(function($routeProvider){
@@ -10,7 +10,6 @@ appDesafio.config(function($routeProvider){
 		{templateUrl:'view/crud-operador.html', controller: 'cadastroOperador',
 		 resolve:{
 		        "check":function($location,$http){
-		        	console.log('Testetetaetaetaetasdasdas')
 		        	$http.get('http://localhost:8080/usuario/admin/')
 		            .then(function (response){})
 		            .catch(function () {
@@ -20,5 +19,8 @@ appDesafio.config(function($routeProvider){
 		    }
 	})
 	.when("/login",{templateUrl:'view/login.html', controller: 'loginOperador'})
+	.when("/gerente",{templateUrl:'view/visao-gerente.html', controller: 'cadastropessoa'})
+	.when("/analista",{templateUrl:'view/visao-analista.html'})
+	.when("/logout",{templateUrl:'view/login.html'})
 	.otherwise({rediretTo:'/'});
 });

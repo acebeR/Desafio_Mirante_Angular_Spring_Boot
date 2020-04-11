@@ -1,6 +1,9 @@
 <form name="frmOperador">
 <div>
-	<br>
+    <div ng-if="mensagem != ''" class="alert alert-danger" role="alert">
+	  {{mensagem}}
+	</div>
+	<br><br>
 	<div class="container">
 		<div class="row">
 			<div class="form-group col-md-12 row">
@@ -28,9 +31,10 @@
 				<label
 					class="col-md-4 col-form-label text-md-right">Senha</label>
 				<div class="col-md-6">
-					<input ng-maxlength="15" type="password" ng-model="operador.usuario.senha" name="txtSenha" class="form-control" required>
+					<input ng-maxlength="15" ng-minlength="6" type="password" ng-model="operador.usuario.senha" name="txtSenha" class="form-control" required>
 					<span style="color:red" ng-show="frmOperador.txtSenha.$error.required && frmOperador.txtSenha.$dirty">Campo Senha Obrigatorio</span>
 					<span style="color:red" ng-show="frmOperador.txtSenha.$error.maxlength">A senha so pode conter 15 caracteres</span>
+					<span style="color:red" ng-show="frmOperador.txtSenha.$error.minlength">A senha precisa ter no minimo 6 caracteres</span>
 				</div>
 			</div>
 			<div class="form-group col-md-12 row">
@@ -61,6 +65,7 @@
 	</div>
 </div>
 </div>
+</form>
 <div class="container">
 	<div class="form-group row">
 		<div class="col-md-12">
@@ -90,7 +95,7 @@
 						</select> <label data-ng-if="!alterar">{{op.perfil}}</label></td>
 
 						<td><label data-ng-if="!alterar">{{op.usuario.login}}</label> <input
-							data-ng-if="alterar" type="text" ng-model="op.login"
+							data-ng-if="alterar" type="text" ng-model="op.usuario.login"
 							class="form-control"></input></td>
 
 						<td>{{geraData(op.data_cadastro)}}</td>
@@ -108,4 +113,3 @@
 </div>
 
 </div>
-</form>

@@ -38,10 +38,10 @@ public class LoginController {
 		if(!usu.getSenha().equals(usuario.getSenha())){
 			throw new ServletException("Senha inválida");
 		}
-		String token = Jwts.builder().setSubject(usu.getLogin()).signWith(SignatureAlgorithm.HS512, "banana").setExpiration(new Date(System.currentTimeMillis() + 60 * 60 * 1000)).compact();
+		String token = Jwts.builder().setSubject(usu.getLogin()).signWith(SignatureAlgorithm.HS512, "banana").setExpiration(new Date(System.currentTimeMillis() + 2 * 60 * 1000)).compact();
 		return new LoginResponse(token);
 	}
-	
+
 	
 	private class LoginResponse{
 		String token;

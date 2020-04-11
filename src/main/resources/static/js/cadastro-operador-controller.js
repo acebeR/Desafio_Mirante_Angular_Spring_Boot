@@ -17,7 +17,7 @@ appDesafio.controller("cadastroOperador",  function($scope, $http){
 	$scope.alterar = false;
 	$scope.validaLetraLogin = true;
 	$scope.confSenha = "";
-	
+	$scope.mensagem = "";
 	
 	token = localStorage.getItem("userToken");
 	$http.defaults.headers.common.Authorization = 'Bearer ' + token;
@@ -34,8 +34,8 @@ appDesafio.controller("cadastroOperador",  function($scope, $http){
  			$scope.operadores = response.data;
  			console.log($scope.operadores);
          })
-         .catch(function () {
-        	 console.log(response.data);
+         .catch(function (response) {
+        	 $scope.mensagem = response.data.message;
          });
 
 	}
@@ -45,8 +45,8 @@ appDesafio.controller("cadastroOperador",  function($scope, $http){
          .then(function (response) {
         	 $scope.listaOperadores();
          })
-         .catch(function () {
-        	 console.log(response.data);
+         .catch(function (response) {
+        	 $scope.mensagem = response.data.message;
          });
 	 }
 	 
@@ -55,20 +55,24 @@ appDesafio.controller("cadastroOperador",  function($scope, $http){
          .then(function (response) {
         	 $scope.listaOperadores();
          })
-         .catch(function () {
-        	 console.log(response.data);
+         .catch(function (response) {
+        	 $scope.mensagem = response.data.message;
          });
 	 }
 	 
 	 function adicionarOp(){
-		 $http.post('http://localhost:8080/admin/operadores/', $scope.operador)
-         .then(function (response) {
-        	 $scope.listaOperadores();
-         })
-         .catch(function () {
-        	 console.log(response.data);
-         });
-
+		 if($scope.operador.login != 'admin'){
+			 $http.post('http://localhost:8080/admin/operadores/', $scope.operador)
+	         .then(function (response) {
+	        	 $scope.listaOperadores();
+	         })
+	         .catch(function (response) {
+	        	 $scope.mensagem = response.data.message;
+	         });
+		 }else{
+			 $scope.mensagem = "Voce nao pode cadastrar como admin";
+		 }	 
+		 
 	 }
 	
 	 function geraData(data){
