@@ -13,7 +13,9 @@ appDesafio.controller("cadastroOperador",  function($scope, $http){
 	$scope.operador = {};
 	$scope.alterar = false;
 	$scope.validaLetraLogin = true;
-
+	token = localStorage.getItem("userToken");
+	$http.defaults.headers.common.Authorization = 'Bearer ' + token;
+	
 	function init(){
 		$scope.listaOperadores();
 	}
@@ -21,7 +23,7 @@ appDesafio.controller("cadastroOperador",  function($scope, $http){
 	init();
 	
 	function listaOperadores(){
-		 $http.get('http://localhost:8080/listaoperadores/')
+		 $http.get('http://localhost:8080/admin/listaoperadores/')
          .then(function (response) {
  			$scope.operadores = response.data;
          })
@@ -32,7 +34,7 @@ appDesafio.controller("cadastroOperador",  function($scope, $http){
 	}
 	
 	 function excluirOperador(operador){
-		 $http.delete('http://localhost:8080/excluioperadores/'+operador.id)
+		 $http.delete('http://localhost:8080/admin/excluioperadores/'+operador.id)
          .then(function (response) {
         	 $scope.listaOperadores();
          })
@@ -42,7 +44,7 @@ appDesafio.controller("cadastroOperador",  function($scope, $http){
 	 }
 	 
 	 function alterarOperador(op){
-		 $http.put('http://localhost:8080/alteraoperadores/', op)
+		 $http.put('http://localhost:8080/admin/alteraoperadores/', op)
          .then(function (response) {
         	 $scope.listaOperadores();
          })
@@ -52,7 +54,7 @@ appDesafio.controller("cadastroOperador",  function($scope, $http){
 	 }
 	 
 	 function adicionarOp(){
-		 $http.post('http://localhost:8080/operadores/', $scope.operador)
+		 $http.post('http://localhost:8080/admin/operadores/', $scope.operador)
          .then(function (response) {
         	 $scope.listaOperadores();
          })

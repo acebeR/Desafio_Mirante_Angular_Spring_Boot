@@ -16,10 +16,11 @@ import br.com.desafio.mirante.model.Operador;
 import br.com.desafio.mirante.service.OperadorService;
 
 @RestController
+@RequestMapping("/admin")
 public class OperadorController {
 	
 	@Autowired
-	OperadorService operadorService;
+	private OperadorService operadorService;
 	
 	@RequestMapping(method=RequestMethod.POST, value="/operadores", consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Operador> cadastrarOperador(@RequestBody Operador operador){
