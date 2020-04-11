@@ -4,30 +4,43 @@
 	<div class="container">
 		<div class="row">
 			<div class="form-group col-md-12 row">
-				<label for="email_address"
+				<label
 					class="col-md-4 col-form-label text-md-right">Nome Operador</label>
 				<div class="col-md-6">
-					<input type="text" ng-model="operador.nome" class="form-control" name="txtNome" ng-maxlength="100" required>
+					<input type="text" ng-model="operador.nome" ng-pattern="/^[a-zA-Z]*$/" class="form-control" name="txtNome" ng-maxlength="100" required>
 					<span style="color:red" ng-show="frmOperador.txtNome.$error.required && frmOperador.txtNome.$dirty">Campo Nome Obrigatorio</span>
 					<span style="color:red" ng-show="frmOperador.txtNome.$error.maxlength">O nome so pode conter 100 caracteres</span>
+					<span style="color:red" ng-show="frmOperador.txtNome.$error.pattern">Campo nome deve conter somente letras</span>
 				</div>
 			</div>
 			<div class="form-group col-md-12 row">
-				<label for="email_address"
+				<label
 					class="col-md-4 col-form-label text-md-right">Login</label>
 				<div class="col-md-6">
-					<input  type="text" name="txtLogin" ng-model="operador.login" class="form-control" ng-maxlength="15" required>
+					<input  type="text" name="txtLogin" ng-model="operador.usuario.login" ng-pattern="/^[a-zA-Z]*$/" class="form-control" ng-maxlength="15" required>
 					<span style="color:red" ng-show="frmOperador.txtLogin.$error.required && frmOperador.txtLogin.$dirty">Campo Login Obrigatorio</span>
 					<span style="color:red" ng-show="frmOperador.txtLogin.$error.maxlength">O login so pode conter 15 caracteres</span>
+					<span style="color:red" ng-show="frmOperador.txtLogin.$error.pattern">Campo Login deve conter somente letras</span>
+				</div>
+			</div>
+			
+			<div class="form-group col-md-12 row">
+				<label
+					class="col-md-4 col-form-label text-md-right">Senha</label>
+				<div class="col-md-6">
+					<input ng-maxlength="15" type="password" ng-model="operador.usuario.senha" name="txtSenha" class="form-control" required>
+					<span style="color:red" ng-show="frmOperador.txtSenha.$error.required && frmOperador.txtSenha.$dirty">Campo Senha Obrigatorio</span>
+					<span style="color:red" ng-show="frmOperador.txtSenha.$error.maxlength">A senha so pode conter 15 caracteres</span>
 				</div>
 			</div>
 			<div class="form-group col-md-12 row">
-				<label for="email_address"
-					class="col-md-4 col-form-label text-md-right">Senha</label>
+				<label
+					class="col-md-4 col-form-label text-md-right">Confirme a Senha</label>
 				<div class="col-md-6">
-					<input ng-maxlength="15" type="password" ng-model="operador.senha" name="txtSenha" class="form-control" required>
-					<span style="color:red" ng-show="frmOperador.txtSenha.$error.required && frmOperador.txtSenha.$dirty">Campo Senha Obrigatorio</span>
-					<span style="color:red" ng-show="frmOperador.txtSenha.$error.maxlength">O senha so pode conter 15 caracteres</span>
+					<input ng-maxlength="15"  type="password" ng-model="confSenha" name="txtConfSenha" class="form-control" required>
+					<span style="color:red" ng-show="frmOperador.txtConfSenha.$error.required && frmOperador.txtConfSenha.$dirty">Campo Senha Obrigatorio</span>
+					<span style="color:red" ng-show="frmOperador.txtConfSenha.$error.maxlength">O campo senha so pode conter 15 caracteres</span>
+					<span style="color:red" ng-show="confSenha != '' && confSenha != operador.usuario.senha">As senhas estao diferentes</span>
 				</div>
 			</div>
 			<div class="form-group col-md-12 row">
@@ -76,7 +89,7 @@
 								<option>ANALISTA</option>
 						</select> <label data-ng-if="!alterar">{{op.perfil}}</label></td>
 
-						<td><label data-ng-if="!alterar">{{op.login}}</label> <input
+						<td><label data-ng-if="!alterar">{{op.usuario.login}}</label> <input
 							data-ng-if="alterar" type="text" ng-model="op.login"
 							class="form-control"></input></td>
 

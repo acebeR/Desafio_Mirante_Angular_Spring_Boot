@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.desafio.mirante.model.Operador;
+import br.com.desafio.mirante.model.Usuario;
 import br.com.desafio.mirante.service.OperadorService;
+import br.com.desafio.mirante.service.UsuarioService;
 
 @RestController
 @RequestMapping("/admin")
@@ -21,9 +23,12 @@ public class OperadorController {
 	
 	@Autowired
 	private OperadorService operadorService;
+	@Autowired
+	private UsuarioService usuarioService;
 	
 	@RequestMapping(method=RequestMethod.POST, value="/operadores", consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Operador> cadastrarOperador(@RequestBody Operador operador){
+
 		Operador opCadastro = new Operador();
 		opCadastro = operadorService.cadastrar(operador);
 		return new ResponseEntity<Operador>(opCadastro,HttpStatus.CREATED);

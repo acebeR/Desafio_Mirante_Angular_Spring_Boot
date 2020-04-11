@@ -2,9 +2,12 @@ package br.com.desafio.mirante.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -17,13 +20,13 @@ public class Operador {
 	@GeneratedValue
 	private  Integer id;
 	private  String nome;
-	private  String login;
-	private  String senha;
 	@CreationTimestamp
 	@Temporal(TemporalType.DATE)
 	private  Date data_cadastro;
 	private	String	perfil;
-	
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "id_usuario")
+	private Usuario usuario;
 	
 	public Integer getId() {
 		return id;
@@ -37,18 +40,6 @@ public class Operador {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getLogin() {
-		return login;
-	}
-	public void setLogin(String login) {
-		this.login = login;
-	}
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
 	public Date getData_cadastro() {
 		return data_cadastro;
 	}
@@ -60,6 +51,12 @@ public class Operador {
 	}
 	public void setPerfil(String perfil) {
 		this.perfil = perfil;
+	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	

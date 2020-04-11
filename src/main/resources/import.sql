@@ -1,0 +1,1 @@
+INSERT INTO Usuario (id_usuario,login,senha,admin) VALUES (1,'admin','admin',true)

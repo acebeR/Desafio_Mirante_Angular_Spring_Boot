@@ -13,6 +13,9 @@ appDesafio.controller("cadastroOperador",  function($scope, $http){
 	$scope.operador = {};
 	$scope.alterar = false;
 	$scope.validaLetraLogin = true;
+	$scope.confSenha = "";
+	
+	
 	token = localStorage.getItem("userToken");
 	$http.defaults.headers.common.Authorization = 'Bearer ' + token;
 	
@@ -26,6 +29,7 @@ appDesafio.controller("cadastroOperador",  function($scope, $http){
 		 $http.get('http://localhost:8080/admin/listaoperadores/')
          .then(function (response) {
  			$scope.operadores = response.data;
+ 			console.log($scope.operadores);
          })
          .catch(function () {
         	 console.log(response.data);

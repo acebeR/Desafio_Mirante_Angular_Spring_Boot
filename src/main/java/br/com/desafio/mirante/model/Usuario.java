@@ -1,5 +1,6 @@
 package br.com.desafio.mirante.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,6 +13,8 @@ public class Usuario {
 	private Integer id_usuario;
 	private String login;
 	private String senha;
+	@Column(columnDefinition = "boolean default false")
+	private boolean admin; 
 	
 	public String getLogin() {
 		return login;
@@ -24,6 +27,12 @@ public class Usuario {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public boolean isAdmin() {
+		return admin;
+	}
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 	
 	
