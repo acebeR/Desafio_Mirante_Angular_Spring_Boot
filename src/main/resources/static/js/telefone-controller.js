@@ -40,7 +40,7 @@ appDesafio.controller("telefoneController",  function($scope, $http, $route){
 	}
 	
 	 function excluirTelefone(telefone){
-		 $http.delete('http://localhost:8080/excluiTelefones/'+telefone.id_telefone)
+		 $http.delete('http://localhost:8080/excluiTelefones/'+ telefone.id_telefone)
          .then(function (response) {
         	 $scope.listaTelefone();
          })
@@ -51,7 +51,7 @@ appDesafio.controller("telefoneController",  function($scope, $http, $route){
 	 
 	 function alterarTelefone(telefone){
 
-		 $http.put('http://localhost:8080/alteraTelefones/', data: { telefone: telefone })
+		 $http.put('http://localhost:8080/alteraTelefones/', telefone)
          .then(function (response) {
         	 $scope.listaTelefone();
          })
