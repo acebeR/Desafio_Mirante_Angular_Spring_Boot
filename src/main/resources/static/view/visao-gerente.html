@@ -151,9 +151,9 @@
 									data-ng-if="p.tipoPessoa == 'FISICA' && alterar" type="text" ng-model="p.documento"
 									class="form-control"></input>
 							</td>
-							<td><button ng-click="excluirpessoa(p)">Excluir</button></td>
-							<td><button ng-click="controleAlterar(p);alterar = !alterar">Alterar</button></td>
-							<td><button data-ng-if="alterar" ng-click="alterarpessoa(p)">Salvar</button></td>
+							<td><button class="btn btn-danger" ng-click="excluirpessoa(p)">Excluir</button></td>
+							<td><button class="btn btn-warning" ng-click="controleAlterar(p);alterar = !alterar">Alterar</button></td>
+							<td><button class="btn btn-primary" data-ng-if="alterar" ng-click="alterarpessoa(p)">Salvar</button></td>
 						</tr>
 	
 					</tbody>

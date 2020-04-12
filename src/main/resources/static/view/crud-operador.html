@@ -66,6 +66,7 @@
 </div>
 </div>
 </form>
+<form name="frmAlterarOperador">
 <div class="container">
 	<div class="form-group row">
 		<div class="col-md-12">
@@ -85,24 +86,38 @@
 				<tbody>
 					<tr ng-repeat="op in operadores | orderBy: 'id'">
 						<td>{{op.id}}</td>
-						<td><label data-ng-if="!alterar">{{op.nome}}</label> <input
-							data-ng-if="alterar" type="text" ng-model="op.nome"
-							class="form-control"></input></td>
+						<td>
+							<label data-ng-if="!alterar">{{op.nome}}</label> 
+							<input data-ng-if="alterar" type="text" ng-model="op.nome" ng-pattern="/^[a-zA-Z]*$/" class="form-control" name="txtAlteraNome" ng-maxlength="100" required></input>
+							<span style="color:red" ng-show="frmAlterarOperador.txtAlteraNome.$error.required && frmAlterarOperador.txtAlteraNome.$dirty">Campo Nome Obrigatorio</span>
+							<span style="color:red" ng-show="frmAlterarOperador.txtAlteraNome.$error.maxlength">O nome so pode conter 100 caracteres</span>
+							<span style="color:red" ng-show="frmAlterarOperador.txtAlteraNome.$error.pattern">Campo nome deve conter somente letras</span>
+						</td>
 
-						<td><select data-ng-if="alterar" ng-model="op.perfil" id="">
+						<td>
+							<select select data-ng-if="alterar" class="form-control" ng-model="op.perfil" id="">
+								<option ng-disabled="true">Perfil do Operador</option>
 								<option>GERENTE</option>
 								<option>ANALISTA</option>
-						</select> <label data-ng-if="!alterar">{{op.perfil}}</label></td>
+							</select>
+							<span style="color:red" ng-show="frmAlterarOperador.selectAlteraPerfil.$error.required && frmAlterarOperador.selectAlteraPerfil.$dirty">Campo Perfil Obrigatorio</span>
+							<label data-ng-if="!alterar">{{op.perfil}}</label>
+						</td>
 
-						<td><label data-ng-if="!alterar">{{op.usuario.login}}</label> <input
-							data-ng-if="alterar" type="text" ng-model="op.usuario.login"
-							class="form-control"></input></td>
+						<td>
+							<label data-ng-if="!alterar">{{op.usuario.login}}</label>
+							<input
+								data-ng-if="alterar"type="text" name="txtAlteraLogin" ng-model="op.usuario.login" ng-pattern="/^[a-zA-Z]*$/" class="form-control" ng-maxlength="15" required>
+							</input>
+							<span style="color:red" ng-show="frmAlterarOperador.txtAlteraLogin.$error.required && frmAlterarOperador.txtAlteraLogin.$dirty">Campo Login Obrigatorio</span>
+							<span style="color:red" ng-show="frmAlterarOperador.txtAlteraLogin.$error.maxlength">O login so pode conter 15 caracteres</span>
+							<span style="color:red" ng-show="frmAlterarOperador.txtAlteraLogin.$error.pattern">Campo Login deve conter somente letras</span>
+						</td>
 
 						<td>{{geraData(op.data_cadastro)}}</td>
-						<td><button ng-click="excluirOperador(op)">Excluir</button></td>
-						<td><button ng-click="alterar = !alterar">Alterar</button></td>
-						<td><button data-ng-if="alterar"
-								ng-click="alterarOperador(op)">Salvar</button></td>
+						<td><button class="btn btn-danger" ng-click="excluirOperador(op)">Excluir</button></td>
+						<td><button class="btn btn-warning" ng-click="alterar = !alterar">Alterar</button></td>
+						<td><button class="btn btn-primary" data-ng-if="alterar" ng-click="alterarOperador(op)" ng-disabled="frmAlterarOperador.$invalid">Salvar</button></td>
 					</tr>
 
 				</tbody>
@@ -111,5 +126,4 @@
 	</div>
 
 </div>
-
-</div>
+</form>
