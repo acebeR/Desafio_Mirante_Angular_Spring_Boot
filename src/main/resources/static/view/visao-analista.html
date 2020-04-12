@@ -1,14 +1,43 @@
-<form name="frmAnalista">
+<div class="container">
+    <div ng-if="mensagem != ''" class="alert alert-danger" role="alert">
+	  {{mensagem}}
+	</div>
+	<br><br> 
 	<center>
 		<h2>Bem Vindo Analista</h2>
 	</center>
-	<div>
-		<br>
-		<div class="container">
-			<div class="row">
-
-				
-			</div>
+	<div class="form-group row">
+		<div class="col-md-12">
+			<form name="frmAnalista">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">ID</th>
+							<th scope="col">Nome</th>
+							<th scope="col">Tipo Pessoa</th>
+							<th scope="col">Login</th>
+							<th scope="col">Data de Cadastro</th>
+							<th scope="col">Data de Nascimento</th>
+							<th scope="col">CPF/CNPJ</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="p in pessoas | orderBy: 'id'">
+							<td>{{p.id_pessoa}}</td>
+							<td>{{p.nome}}</td>
+							<td>{{p.tipoPessoa}}</td>
+							<td>{{p.usuario.login}}</td>
+							<td>{{geraData(p.data_cadastro)}}</td>
+							<td>{{geraData(p.data_nascimento)}}</td>
+							<td>
+								<label ng-if="p.tipoPessoa == 'JURIDICA' && !alterar">{{formataCNPJ(p.documento)}}</label>
+								<label ng-if="p.tipoPessoa == 'FISICA' && !alterar">{{formataCPF(p.documento)}}</label>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
 		</div>
 	</div>
-</form>
+
+</div>
