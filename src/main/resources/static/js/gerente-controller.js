@@ -2,7 +2,7 @@
  * Programadora: Rebeca Divina Paula
  */
 
-appDesafio.controller("cadastropessoa",  function($scope, $http){
+appDesafio.controller("cadastropessoa",  function($scope, $http, $location){
 
 	$scope.listapessoas      = listapessoas;
 	$scope.excluirpessoa     = excluirpessoa;
@@ -15,7 +15,7 @@ appDesafio.controller("cadastropessoa",  function($scope, $http){
 	$scope.controleAlterar   = controleAlterar;
 	$scope.voltaData		 = voltaData;
 	$scope.hoje = new Date();
-	
+	$scope.redirecionar		 = redirecionar;
 	
 	$scope.pessoas = [];
 	$scope.nomeEdit = ""; 
@@ -24,6 +24,8 @@ appDesafio.controller("cadastropessoa",  function($scope, $http){
 	$scope.validaLetraLogin = true;
 	$scope.confSenha = "";
 	$scope.mensagem = '';
+	$scope.telefones = [];
+	
 	
 	function init(){
 		$scope.listapessoas();
@@ -117,4 +119,7 @@ appDesafio.controller("cadastropessoa",  function($scope, $http){
 		 return cnpj.substr(0,3)+"."+cnpj.substr(3,3) + '.' + cnpj.substr(6,3) + '/' + cnpj.substr(9,4) + '-' + cnpj.substr(13,2);
 	 }
 	
+	 function redirecionar(p){
+		 $location.path('/pessoa/'+p.id_pessoa+'/telefones');
+	 }
 });

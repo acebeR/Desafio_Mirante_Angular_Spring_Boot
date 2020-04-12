@@ -33,6 +33,12 @@ public class PessoaController {
 		return new ResponseEntity<>(opList, HttpStatus.OK);
 	}
 	
+	@RequestMapping(method=RequestMethod.GET, value="/listaPessoasPorId/{id_pessoa}", produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Pessoa> buscarPessoaPorID(@PathVariable Integer id_pessoa){
+		Pessoa pessoa = pessoaService.buscaPorId(id_pessoa);
+		return new ResponseEntity<>(pessoa, HttpStatus.OK);
+	}
+	
 	@RequestMapping(method=RequestMethod.DELETE, value="/excluiPessoa/{id}")
 	public ResponseEntity<Pessoa> excluirPessoa(@PathVariable Integer id){
 		

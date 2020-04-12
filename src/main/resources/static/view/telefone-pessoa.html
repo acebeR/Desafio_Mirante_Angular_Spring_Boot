@@ -1,0 +1,112 @@
+<form name="frmTelCadastro">
+	<br><br> 
+	<center>
+		<h2>Cadastro de Telefones da telefone:  </h2>
+	</center>
+	<div>
+	
+	    <div ng-if="mensagem != ''" class="alert alert-danger" role="alert">
+		  {{mensagem}}
+		</div>
+		<br><br>
+		<div class="container">
+			<div class="row">
+				<div class="form-group col-md-12 row">
+					<label
+						class="col-md-4 col-form-label text-md-right">DDD</label>
+					<div class="col-md-6">
+						<input type="text" ng-model="telefone.ddd"  ng-pattern="/^[0-9]*$/" class="form-control" name="txtDDD" ng-minlength="3" ng-maxlength="3" required>
+						<span style="color:red" ng-show="frmTelCadastro.txtDDD.$error.maxlength">O DDD e composto por 3 exemplo (061)</span>
+						<span style="color:red" ng-show="frmTelCadastro.txtDDD.$error.minlength">O DDD e composto por 3 exemplo (061)</span>
+					</div>
+				</div>
+				<div class="form-group col-md-12 row">
+					<label
+						class="col-md-4 col-form-label text-md-right">Numero</label>
+					<div class="col-md-6">
+						<input  type="text" name="txtNumero" ng-model="telefone.numero"  ng-pattern="/^[0-9]*$/" class="form-control" ng-maxlength="15" required>
+						<span style="color:red" ng-show="frmTelCadastro.txtNumero.$error.pattern">Campo Login deve conter somente numeros</span>
+					</div>
+				</div>
+
+				<div class="form-group col-md-12 row">
+					<label class="col-md-4  col-form-label text-md-right" for="exampleFormControlSelect1">Tipo telefone</label>
+					<div class="col-md-6">
+						<select placeholder="Perfil do telefone" name="selectTipo" ng-model="telefone.tipo" class="form-control" required>
+							<option ng-disabled="true">Tipo Telefone</option>
+							<option>FIXO</option>
+							<option>CELULAR</option>
+							<option>COMERCIAL</option>
+						</select>
+						<span style="color:red" ng-show="frmTelCadastro.selectTipo.$error.required && frmTelCadastro.selectTipo.$dirty">Campo Tipo Obrigatorio</span>
+					</div>
+				</div>
+
+				<br><br>
+				<!-- Telefone -->
+	
+	
+				<br><br>
+				<div class="form-group col-md-12 text-center">
+					<button ng-click="adicionarTelefone()" type="submit" class="btn btn-primary" >Cadastrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</form>
+
+<div class="container">
+	<div class="form-group row">
+		<div class="col-md-12">
+			<form name="frmTelefone">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Id</th>
+							<th scope="col">ddd</th>
+							<th scope="col">Numero</th>
+							<th scope="col">Tipo</th>
+							<th scope="col">Data de Cadastro</th>
+							<th scope="col"></th>
+							<th scope="col"></th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="t in telefones | orderBy: 'id'">
+							<td>{{t.id_telefone}}</td>
+							<td>
+								<label data-ng-if="!alterar">{{t.ddd}}</label> 
+								<input
+								data-ng-if="alterar" type="text" ng-model="t.ddd"
+								class="form-control"></input>
+							</td>
+							<td>
+								<label data-ng-if="!alterar">{{t.numero}}</label> 
+								<input
+									data-ng-if="alterar" type="text" ng-model="t.numero"
+									class="form-control">
+								</input>
+							</td>
+							<td>
+							  	<select data-ng-if="alterar" class="form-control" ng-model="t.tipo" id="">
+									<option>CELULAR</option>
+									<option>FIXO</option>
+									<option>COMERCIAL</option>
+								</select> 
+								<label data-ng-if="!alterar">{{t.tipo}}</label>
+							  </td>
+	
+							<td>{{geraData(t.data_cadastro)}}</td>
+							<td><button class="btn btn-danger" ng-click="excluirTelefone(p)">Excluir</button></td>
+							<td><button class="btn btn-warning" ng-click="controleAlterar(p);alterar = !alterar">Alterar</button></td>
+							<td><button class="btn btn-primary" ng-click="alterarTelefone(p)">Salvar</button></td>
+						</tr>
+	
+					</tbody>
+				</table>
+			</form>
+		</div>
+	</div>
+</div>

@@ -21,6 +21,7 @@ appDesafio.config(function($routeProvider){
 	.when("/login",{templateUrl:'view/login.html', controller: 'loginOperador'})
 	.when("/gerente",{templateUrl:'view/visao-gerente.html', controller: 'cadastropessoa'})
 	.when("/analista",{templateUrl:'view/visao-analista.html', controller: 'analistaController'})
+	.when("/pessoa/:id_pessoa/telefones",{templateUrl:'view/telefone-pessoa.html', controller: 'telefoneController'})
 	.when("/logout",{templateUrl:'view/login.html'})
 	.otherwise({rediretTo:'/'});
 });
