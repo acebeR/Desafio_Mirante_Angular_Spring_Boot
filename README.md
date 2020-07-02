@@ -25,7 +25,7 @@ Senha: admin
 
 ![alt text](https://github.com/acebeR/desafioMirante/blob/master/img/login_admin.jpg?raw=true)
 
-<h2> Cadastra um Gerente ou Analista </h2>
+<h2> Cadastre um Gerente ou Analista </h2>
 
 ![alt text](https://github.com/acebeR/desafioMirante/blob/master/img/cadastra_operador.jpg?raw=true)
 
