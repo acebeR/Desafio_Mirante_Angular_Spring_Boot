@@ -21,7 +21,7 @@ Frontend<br>
 Login: admin
 Senha: admin
 
-<h2> Logo com admin </h2>
+<h2> Logue como admin </h2>
 
 ![alt text](https://github.com/acebeR/desafioMirante/blob/master/img/login_admin.jpg?raw=true)
 
@@ -29,15 +29,15 @@ Senha: admin
 
 ![alt text](https://github.com/acebeR/desafioMirante/blob/master/img/cadastra_operador.jpg?raw=true)
 
-<h2> Se for com Gerente, logue com o login dele </h2>
+<h2> Se você se cadastrou como Gerente, logue com o login dele </h2>
 
 ![alt text](https://github.com/acebeR/desafioMirante/blob/master/img/logar_gerente.jpg?raw=true)
 
-<h2> Cadastre um pessoa </h2>
+<h2> Cadastre uma pessoa </h2>
 
 ![alt text](https://github.com/acebeR/desafioMirante/blob/master/img/visao_gerente.jpg?raw=true)
 
-<h2> Se for com Analista, logue com o login dele </h2>
+<h2> Se for como Analista, logue com o login dele </h2>
 
 ![alt text](https://github.com/acebeR/desafioMirante/blob/master/img/visao%20analista.jpg?raw=true)
 
