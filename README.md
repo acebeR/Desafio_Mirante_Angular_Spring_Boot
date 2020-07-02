@@ -18,7 +18,7 @@ Frontend<br>
 •	CSS;<br>
 
 <h2> Login admin </h2><br>
-<h5>Login: admin</h5> <br>
+<h5>Login: admin</h5> 
 <h5>Senha: admin</h5>
 
 <h2> Logue como admin </h2>
