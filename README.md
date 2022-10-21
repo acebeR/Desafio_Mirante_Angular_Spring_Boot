@@ -1,3 +1,8 @@
+Para rodar o projeto pecisa:
+
+• Criar o banco no PostgreSQL
+• mvn clean install -U
+• mvn spring-boot:run
 
 Tecnologias Backend<br>
 •	Java;<br>
